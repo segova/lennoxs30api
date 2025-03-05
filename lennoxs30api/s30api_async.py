@@ -402,14 +402,14 @@ class s30api_async(object):
 
     async def serverConnect(self) -> None:
         # On a reconnect we will close down the old session and get a new one
-        _LOGGER.debug("serverConnect - Entering")
+        _LOGGER.info("serverConnect - Entering")
         await self._close_session()
         self._create_session()
         await self.authenticate()
         await self.login()
         await self.negotiate()
         self.metrics.last_reconnect_time = self.metrics.now()
-        _LOGGER.debug("serverConnect - Complete")
+        _LOGGER.info("serverConnect - Complete")
 
     AUTHENTICATE_RETRIES: int = 5
 
